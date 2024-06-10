@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('./0_OCh2ueFNWVEkvNsy.png') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .calc-container {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 320px;
+        }
+        .calc-header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            border-bottom: 1px solid #ddd;
+        }
+        .calc-body {
+            padding: 20px;
+            background-color: #b3b9ba; /* Light grey background */
+            border-radius: 0 0 10px 10px; /* Rounded corners for the bottom of the container */
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            height: 50px;
+            margin: 10px 0;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-weight: bold;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        input[type="button"] {
+            height: 50px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            font-weight: bold;
+        }
+        input[type="button"]:hover {
+            background-color: #d0d0d0; /* Slightly darker grey for hover */
+        }
+        input[type="button"]:active {
+            transform: scale(0.95);
+        }
+        .button-equal {
+            grid-column: span 2;
+            background-color: #4caf50;
+            color: black;
+        }
+        .button-equal:hover {
+            background-color: #45a049;
+        }
+        .button-clear {
+            background-color: #f44336;
+            color: black;
+        }
+        .button-clear:hover {
+            background-color: #e53935;
+        }
+    </style>
+    <script>
+        function addToDisplay(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = '';
+        }
+
+        function calculate() {
+            let display = document.getElementById("display");
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="calc-container">
+        <div class="calc-header">
+             Calculator
+        </div>
+        <div class="calc-body">
+            <input type="text" id="display" readonly>
+            <div class="buttons">
+                <input type="button" value="1" onclick="addToDisplay('1')">
+                <input type="button" value="2" onclick="addToDisplay('2')">
+                <input type="button" value="3" onclick="addToDisplay('3')">
+                <input type="button" value="+" onclick="addToDisplay('+')">
+                <input type="button" value="4" onclick="addToDisplay('4')">
+                <input type="button" value="5" onclick="addToDisplay('5')">
+                <input type="button" value="6" onclick="addToDisplay('6')">
+                <input type="button" value="-" onclick="addToDisplay('-')">
+                <input type="button" value="7" onclick="addToDisplay('7')">
+                <input type="button" value="8" onclick="addToDisplay('8')">
+                <input type="button" value="9" onclick="addToDisplay('9')">
+                <input type="button" value="*" onclick="addToDisplay('*')">
+                <input type="button" value="0" onclick="addToDisplay('0')">
+                <input type="button" value="/" onclick="addToDisplay('/')">
+                <input type="button" value="C" class="button-clear" onclick="clearDisplay()">
+                <input type="button" value="=" class="button-equal" onclick="calculate()">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
